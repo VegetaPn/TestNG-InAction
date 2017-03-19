@@ -3,6 +3,7 @@ package com.yanhaonan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -17,8 +18,9 @@ public class FoodMachineSpringTest extends AbstractTestNGSpringContextTests {
     FoodMachine foodMachine;
 
     @BeforeSuite
-    public void beforeSuite() {
-//        foodMachine.product();
+    public void beforeSuite() throws Exception {
+        super.springTestContextPrepareTestInstance();
+        foodMachine.product();
         System.out.println("\nBefore suite");
     }
 
